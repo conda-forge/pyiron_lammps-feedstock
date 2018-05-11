@@ -1,6 +1,6 @@
 {% set name = "pyiron_lammps" %}
-{% set version = "0.1.3" %}
-{% set sha256 = "e626fe8d46b82723f20446019f3010e0497bc56e1e2e7cf4b56875ad0b62fe03" %}
+{% set version = "0.1.4" %}
+{% set sha256 = "879e906a9be8d752b87fe3271712102481bf2a35cf267850fc4d71aab113f280" %}
 
 package:
   name: {{ name|lower }}
