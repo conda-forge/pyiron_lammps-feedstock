@@ -12,17 +12,16 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  noarch: python
   number: 0
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
-    - python >=3.6
+    - python
     - pip
 
   run:
-    - python >=3.6
+    - python
     - ase >=3.22.1
     - lammps >=2022.06.23  # [not win]
     - numpy >=1.23.5
