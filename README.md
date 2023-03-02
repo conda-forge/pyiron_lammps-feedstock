@@ -1,26 +1,33 @@
-About pyiron_lammps
-===================
+About pyiron_lammps-feedstock
+=============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pyiron_lammps-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/pyiron/pyiron_lammps
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD 3-Clause
+Summary: pyiron_lammps - calculate material properties for interatomic potentials
 
-Summary: Lammps plugin for pyiron - an integrated development environment (IDE) for computational materials science.
+Development: https://github.com/pyiron/pyiron_lammps
 
-pyiron was initially developed in the Computational Materials Design department of Joerg Neugebauer at the
-Max Planck Insitut für Eisenforschung (Max Planck Insitute for iron research) as a framework for ab initio
-thermodynamics. In collaboration with the Interdisciplinary Centre for Advanced Materials Simulation (ICAMS)
-the framework was recently extended for high throughput applications resulting in the opensource release of
-pyiron.
+Documentation: https://pyiron.org
+
+pyiron_lammps - calculate material properties for interatomic potentials
 
 
 Current build status
 ====================
 
-All platforms:
-[![noarch](https://img.shields.io/circleci/project/github/conda-forge/pyiron_lammps-feedstock/master.svg?label=noarch)](https://circleci.com/gh/conda-forge/pyiron_lammps-feedstock)
+
+<table><tr><td>All platforms:</td>
+    <td>
+      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4868&branchName=main">
+        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pyiron_lammps-feedstock?branchName=main">
+      </a>
+    </td>
+  </tr>
+</table>
 
 Current release info
 ====================
@@ -36,23 +43,52 @@ Installing `pyiron_lammps` from the `conda-forge` channel can be achieved by add
 
 ```
 conda config --add channels conda-forge
+conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `pyiron_lammps` can be installed with:
+Once the `conda-forge` channel has been enabled, `pyiron_lammps` can be installed with `conda`:
 
 ```
 conda install pyiron_lammps
 ```
 
-It is possible to list all of the versions of `pyiron_lammps` available on your platform with:
+or with `mamba`:
+
+```
+mamba install pyiron_lammps
+```
+
+It is possible to list all of the versions of `pyiron_lammps` available on your platform with `conda`:
 
 ```
 conda search pyiron_lammps --channel conda-forge
 ```
 
+or with `mamba`:
+
+```
+mamba search pyiron_lammps --channel conda-forge
+```
+
+Alternatively, `mamba repoquery` may provide more information:
+
+```
+# Search all versions available on your platform:
+mamba repoquery search pyiron_lammps --channel conda-forge
+
+# List packages depending on `pyiron_lammps`:
+mamba repoquery whoneeds pyiron_lammps --channel conda-forge
+
+# List dependencies of `pyiron_lammps`:
+mamba repoquery depends pyiron_lammps --channel conda-forge
+```
+
 
 About conda-forge
 =================
+
+[![Powered by
+NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](https://numfocus.org)
 
 conda-forge is a community-led conda channel of installable packages.
 In order to provide high-quality builds, the process has been automated into the
@@ -62,10 +98,12 @@ for each of the installable packages. Such a repository is known as a *feedstock
 A feedstock is made up of a conda recipe (the instructions on what and how to build
 the package) and the necessary configurations for automatic building using freely
 available continuous integration services. Thanks to the awesome service provided by
-[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/)
-and [TravisCI](https://travis-ci.org/) it is possible to build and upload installable
-packages to the [conda-forge](https://anaconda.org/conda-forge)
-[Anaconda-Cloud](https://anaconda.org/) channel for Linux, Windows and OSX respectively.
+[Azure](https://azure.microsoft.com/en-us/services/devops/), [GitHub](https://github.com/),
+[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
+[Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
+it is possible to build and upload installable packages to the
+[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
 [conda-smithy](https://github.com/conda-forge/conda-smithy) has been developed.
@@ -104,7 +142,17 @@ build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
  * If the version of a package **is not** being increased, please add or increase
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string).
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string).
  * If the version of a package **is** being increased, please remember to return
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
+   the [``build/number``](https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build-number-and-string)
    back to 0.
+
+Feedstock Maintainers
+=====================
+
+* [@jan-janssen](https://github.com/jan-janssen/)
+* [@niklassiemer](https://github.com/niklassiemer/)
+* [@pmrv](https://github.com/pmrv/)
+* [@pyiron-runner](https://github.com/pyiron-runner/)
+* [@srmnitc](https://github.com/srmnitc/)
+

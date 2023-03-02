@@ -1,6 +1,6 @@
 {% set name = "pyiron_lammps" %}
-{% set version = "0.1.8" %}
-{% set sha256 = "d53ded696189edc052b5c84ac71ba308dc94eb7f5486a4dc27aad04d4f9097f9" %}
+{% set version = "0.2.0" %}
+{% set sha256 = "a3a2dcc35f420d4fe5c303b8b6a757864dc494b1788c749656ed06322956cecc" %}
 
 package:
   name: {{ name|lower }}
@@ -18,14 +18,19 @@ build:
 
 requirements:
   build:
-    - python
+    - python >=3.6
     - pip
 
   run:
-    - lammps  # [not win]
-    - python
-    - pyiron_base
-    - pyiron_atomistics
+    - python >=3.6
+    - ase >=3.22.1
+    - numpy >=1.23.5
+    - pandas >=1.5.3
+    - pathlib2 >=2.3.7.post1
+    - pympipool >=0.2.0
+    - scipy >=1.10.1
+    - spglib >=2.0.2
+    - sqsgenerator >=0.2
 
 test:
   imports:
@@ -35,19 +40,17 @@ about:
   home: https://github.com/pyiron/pyiron_lammps
   license: BSD-3-Clause
   license_family: BSD
-  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE.txt'
-  summary: 'Lammps plugin for pyiron - an integrated development environment (IDE) for computational materials science.'
+  license_file: 'LICENSE'
+  summary: 'pyiron_lammps - calculate material properties for interatomic potentials'
   description: |
-    pyiron was initially developed in the Computational Materials Design department of Joerg Neugebauer at the
-    Max Planck Insitut für Eisenforschung (Max Planck Insitute for iron research) as a framework for ab initio
-    thermodynamics. In collaboration with the Interdisciplinary Centre for Advanced Materials Simulation (ICAMS)
-    the framework was recently extended for high throughput applications resulting in the opensource release of
-    pyiron.
+    pyiron_lammps - calculate material properties for interatomic potentials
   doc_url: https://pyiron.org
-  dev_url: https://github.com/pyiron
+  dev_url: https://github.com/pyiron/pyiron_lammps
 
 extra:
   recipe-maintainers:
+    - srmnitc
     - pyiron-runner
     - jan-janssen
-    - sudarsan1989
+    - pmrv
+    - niklassiemer
