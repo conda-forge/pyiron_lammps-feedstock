@@ -18,10 +18,11 @@ build:
 
 requirements:
   build:
-    - python
+    - python >=3.6
     - pip
 
   run:
+    - python >=3.6
     - ase >=3.22.1
     - lammps >=2022.06.23  # [not win]
     - numpy >=1.23.5
