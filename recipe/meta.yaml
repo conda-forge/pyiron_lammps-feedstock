@@ -12,18 +12,18 @@ source:
   sha256: {{ sha256 }}
 
 build:
+  noarch: python
   number: 0
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
-    - python
+    - python >=3.6
     - pip
 
   run:
-    - python
+    - python >=3.6
     - ase >=3.22.1
-    - lammps >=2022.06.23  # [not win]
     - numpy >=1.23.5
     - pandas >=1.5.3
     - pathlib2 >=2.3.7.post1
