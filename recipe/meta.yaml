@@ -1,6 +1,6 @@
 {% set name = "pyiron_lammps" %}
-{% set version = "0.1.8" %}
-{% set sha256 = "d53ded696189edc052b5c84ac71ba308dc94eb7f5486a4dc27aad04d4f9097f9" %}
+{% set version = "0.2.0" %}
+{% set sha256 = "a3a2dcc35f420d4fe5c303b8b6a757864dc494b1788c749656ed06322956cecc" %}
 
 package:
   name: {{ name|lower }}
@@ -22,10 +22,15 @@ requirements:
     - pip
 
   run:
-    - lammps  # [not win]
-    - python
-    - pyiron_base
-    - pyiron_atomistics
+    - ase >=3.22.1
+    - lammps >=2022.06.23  # [not win]
+    - numpy >=1.23.5
+    - pandas >=1.5.3
+    - pathlib2 >=2.3.7.post1
+    - pympipool >=0.2.0
+    - scipy >=1.10.1
+    - spglib >=2.0.2
+    - sqsgenerator >=0.2
 
 test:
   imports:
@@ -48,6 +53,8 @@ about:
 
 extra:
   recipe-maintainers:
+    - srmnitc
     - pyiron-runner
     - jan-janssen
-    - sudarsan1989
+    - pmrv
+    - niklassiemer
