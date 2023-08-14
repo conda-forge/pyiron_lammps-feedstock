@@ -1,6 +1,6 @@
 {% set name = "pyiron_lammps" %}
-{% set version = "0.2.1" %}
-{% set sha256 = "10bc17e41a5a39a02d4b25bf78c2e80ba06966ac63980bcacd1ecf38ba1ad41f" %}
+{% set version = "0.2.2" %}
+{% set sha256 = "d171752a78c1db49bb0b38fa70cd8f8a25220e2e9c5d17c548b8dc255840121a" %}
 
 package:
   name: {{ name|lower }}
@@ -25,10 +25,10 @@ requirements:
     - python >=3.6
     - ase >=3.22.1
     - numpy >=1.23.5
-    - pandas >=2.0.2
+    - pandas >=2.0.3
     - pathlib2 >=2.3.7.post1
-    - pympipool >=0.5.6
-    - pylammpsmpi >=0.2.1
+    - pympipool >=0.6.2
+    - pylammpsmpi >=0.2.2
     - scipy >=1.11.1
     - spglib >=2.0.2
     - sqsgenerator >=0.2
