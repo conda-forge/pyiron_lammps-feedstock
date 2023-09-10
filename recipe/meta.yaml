@@ -1,6 +1,6 @@
 {% set name = "pyiron_lammps" %}
-{% set version = "0.2.2" %}
-{% set sha256 = "d171752a78c1db49bb0b38fa70cd8f8a25220e2e9c5d17c548b8dc255840121a" %}
+{% set version = "0.2.3" %}
+{% set sha256 = "a0dd745c1475d3c2fcd55881003813dc572ca04716d3deb8109a2bf1bf604b1b" %}
 
 package:
   name: {{ name|lower }}
@@ -24,15 +24,11 @@ requirements:
   run:
     - python >=3.6
     - ase >=3.22.1
+    - atomistics >=0.0.4
     - numpy >=1.23.5
     - pandas >=2.0.3
-    - pathlib2 >=2.3.7.post1
     - pympipool >=0.6.2
     - pylammpsmpi >=0.2.2
-    - scipy >=1.11.1
-    - spglib >=2.0.2
-    - sqsgenerator >=0.2
-    - structuretoolkit >=0.0.8
 
 test:
   imports:
