@@ -1,6 +1,6 @@
 {% set name = "pyiron_lammps" %}
-{% set version = "0.2.3" %}
-{% set sha256 = "a0dd745c1475d3c2fcd55881003813dc572ca04716d3deb8109a2bf1bf604b1b" %}
+{% set version = "0.2.4" %}
+{% set sha256 = "186f281f29ae4aaadf8ca35e32cf2500addacbb4d34654e8b71eef72cb792187" %}
 
 package:
   name: {{ name|lower }}
@@ -24,11 +24,11 @@ requirements:
   run:
     - python >=3.6
     - ase >=3.22.1
-    - atomistics >=0.0.4
+    - atomistics >=0.0.5
     - numpy >=1.23.5
-    - pandas >=2.0.3
-    - pympipool >=0.6.2
-    - pylammpsmpi >=0.2.2
+    - pandas >=2.1.0
+    - pympipool >=0.7.0
+    - pylammpsmpi >=0.2.3
 
 test:
   imports:
