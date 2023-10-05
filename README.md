@@ -9,13 +9,6 @@ Package license: BSD-3-Clause
 
 Summary: pyiron_lammps - calculate material properties for interatomic potentials
 
-Development: https://github.com/pyiron/pyiron_lammps
-
-Documentation: https://pyiron.org
-
-pyiron_lammps - calculate material properties for interatomic potentials
-
-
 Current build status
 ====================
 
