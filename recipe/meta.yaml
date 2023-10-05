@@ -1,6 +1,6 @@
 {% set name = "pyiron_lammps" %}
-{% set version = "0.2.4" %}
-{% set sha256 = "186f281f29ae4aaadf8ca35e32cf2500addacbb4d34654e8b71eef72cb792187" %}
+{% set version = "0.2.5" %}
+{% set sha256 = "e17a1b897b085dad95fa36fd521e5c3337cd7b4a75444c655e4762e77eb82a2d" %}
 
 package:
   name: {{ name|lower }}
@@ -14,10 +14,10 @@ source:
 build:
   noarch: python
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
-  build:
+  host:
     - python >=3.6
     - pip
 
