@@ -1,5 +1,5 @@
 {% set name = "pyiron_lammps" %}
-{% set version = "0.2.7" %}
+{% set version = "0.2.9" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyiron_lammps-{{ version }}.tar.gz
-  sha256: 43c948fe94f1b9136e6c00a6d2d286abdda395412f7fbf0e32ce0e01c38cdb08
+  sha256: 2b4cd6b5776d056efe51f8102ce60665644354db444939aeedfa148cd0709b76
 
 build:
   noarch: python
