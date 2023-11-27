@@ -1,5 +1,5 @@
 {% set name = "pyiron_lammps" %}
-{% set version = "0.2.6" %}
+{% set version = "0.2.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyiron_lammps-{{ version }}.tar.gz
-  sha256: 23652d9d254fff154657bf1afb84420e4c31166434e1892ae63553e300079205
+  sha256: 43c948fe94f1b9136e6c00a6d2d286abdda395412f7fbf0e32ce0e01c38cdb08
 
 build:
   noarch: python
@@ -19,13 +19,14 @@ requirements:
     - python >=3.8
     - pip
   run:
+    - jinja2 >=2.11.3,<=3.1.2
     - python >=3.8
-    - ase >=3.22.1
-    - atomistics >=0.1.2
-    - numpy >=1.26.0
-    - pandas >=2.1.3
-    - pylammpsmpi >=0.2.6
-    - pympipool >=0.7.5
+    - ase ==3.22.1
+    - atomistics >=0.1.2,<=0.1.3
+    - numpy >=1.26.0,<=1.26.2
+    - pandas >=1.5.3,<=2.1.3
+    - pylammpsmpi >=0.2.5,<=0.2.6
+    - pympipool >=0.7.2,<=0.7.5
 
 test:
   imports:
