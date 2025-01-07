@@ -26,6 +26,7 @@ requirements:
     - pympipool
     - versioneer
     - toml
+    - setuptools
   run:
     - executorlib ==0.0.1
     - jinja2 >=2.11.3,<=3.1.4
