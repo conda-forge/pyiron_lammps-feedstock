@@ -6,17 +6,17 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyiron_lammps-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pyiron_lammps-{{ version }}.tar.gz
   sha256: d1ce3e5f4b3a75b3f6f766834219ca7401fef02cb9b46d7ed6e99e6fcf285307
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - pip
     - ase
     - atomistics
@@ -29,7 +29,7 @@ requirements:
   run:
     - executorlib ==0.0.1
     - jinja2 >=2.11.3,<=3.1.4
-    - python >=3.8
+    - python >={{ python_min }}
     - ase >=3.22.1,<=3.23.0
     - atomistics >=0.1.21,<=0.1.32
     - numpy >=1.26.0,<=1.26.4
@@ -44,6 +44,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/pyiron/pyiron_lammps
