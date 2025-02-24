@@ -1,0 +1,38 @@
+From 53f68c48f9bc2ff3824ae579802261c059181238 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jan=20Jan=C3=9Fen?= <janssen@mpie.de>
+Date: Mon, 24 Feb 2025 12:55:19 +0100
+Subject: [PATCH] bugfixes
+
+---
+ pyiron_lammps/structure.py | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/pyiron_lammps/structure.py b/pyiron_lammps/structure.py
+index 543801e..feff869 100644
+--- a/pyiron_lammps/structure.py
++++ b/pyiron_lammps/structure.py
+@@ -7,7 +7,6 @@
+ import decimal as dec
+ import posixpath
+ import warnings
+-from collections import OrderedDict
+ 
+ import numpy as np
+ from ase.data import atomic_masses, atomic_numbers
+@@ -199,7 +198,6 @@ def __init__(self, bond_dict=None, units="metal"):
+         self._bond_dict = bond_dict
+         self._force_skewed = False
+         self._units = units
+-        self._molecule_ids = []
+ 
+     @property
+     def potential(self):
+@@ -464,7 +462,7 @@ def structure_to_lammps(structure):
+     lammps_structure.positions = np.matmul(structure.positions, prism.R)
+     if not np.all(
+         np.isclose(
+-            structure.get_velocities(), np.array([0.0, 0.0, 0.0] * len(structure))
++            structure.get_velocities(), np.array([[0.0, 0.0, 0.0]] * len(structure))
+         )
+     ):
+         lammps_structure.set_velocities(np.matmul(structure.get_velocities(), prism.R))
