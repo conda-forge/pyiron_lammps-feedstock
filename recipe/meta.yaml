@@ -21,7 +21,6 @@ requirements:
     - versioneer
     - toml
     - setuptools
-    - h5py
     - scipy
     - ase
     - numpy
