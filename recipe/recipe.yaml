@@ -11,9 +11,11 @@ package:
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pyiron_lammps-${{ version }}.tar.gz
   sha256: 908942490657a6b016270ad2bdd575d8395f23b073197af94c25d4d736caaeef
+  patches:
+    - input.patch
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
