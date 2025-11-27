@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pyiron_lammps
-  version: "0.4.10"
+  version: "0.5.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pyiron_lammps-${{ version }}.tar.gz
-  sha256: 447419dfab246e1e91c01eedcd493183cbb2739d0ccd1660694c550571118be6
+  sha256: 908942490657a6b016270ad2bdd575d8395f23b073197af94c25d4d736caaeef
 
 build:
   number: 0
