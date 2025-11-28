@@ -13,9 +13,10 @@ source:
   sha256: 908942490657a6b016270ad2bdd575d8395f23b073197af94c25d4d736caaeef
   patches:
     - input.patch
+    - potential.patch
 
 build:
-  number: 1
+  number: 2
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
