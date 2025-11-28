@@ -1,0 +1,61 @@
+From be2dfbaeff9ce8dbb3293dc98a966145b72ccf01 Mon Sep 17 00:00:00 2001
+From: Jan Janssen <jan-janssen@users.noreply.github.com>
+Date: Fri, 28 Nov 2025 18:48:25 +0100
+Subject: [PATCH] Compatibility interface - handle different types of
+ potentials (#277)
+
+* Fix potential setter
+
+* extend test
+
+* [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+for more information, see https://pre-commit.ci
+
+* More tests
+
+* [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+for more information, see https://pre-commit.ci
+
+* more fixes
+
+---------
+
+Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+---
+ pyiron_lammps/compatibility/file.py | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/pyiron_lammps/compatibility/file.py b/pyiron_lammps/compatibility/file.py
+index a0ce172..0fd39ed 100644
+--- a/pyiron_lammps/compatibility/file.py
++++ b/pyiron_lammps/compatibility/file.py
+@@ -2,6 +2,7 @@
+ import subprocess
+ from typing import Optional
+ 
++import pandas
+ from ase.atoms import Atoms
+ 
+ from pyiron_lammps.compatibility.calculate import (
+@@ -87,9 +88,16 @@ def lammps_file_interface_function(
+         calc_kwargs = {}
+ 
+     os.makedirs(working_directory, exist_ok=True)
+-    potential_dataframe = get_potential_by_name(
+-        potential_name=potential, resource_path=resource_path
+-    )
++    if isinstance(potential, str):
++        potential_dataframe = get_potential_by_name(
++            potential_name=potential, resource_path=resource_path
++        )
++    elif isinstance(potential, pandas.DataFrame):
++        potential_dataframe = potential.iloc[0]
++    elif isinstance(potential, pandas.Series):
++        potential_dataframe = potential
++    else:
++        raise TypeError()
+     lmp_str_lst = lammps_file_initialization(structure=structure)
+     lmp_str_lst += potential_dataframe["Config"]
+     lmp_str_lst += ["variable dumptime equal {} ".format(calc_kwargs.get("n_print", 1))]
