@@ -58,7 +58,7 @@ index d7888f1..a0ce172 100644
      else:
          raise ValueError(
              f"calc_mode must be one of: static, md or minimize, not {calc_mode}"
-@@ -176,3 +190,26 @@ def lammps_file_initialization(structure, dimension=3, units="metal"):
+@@ -176,3 +190,27 @@ def lammps_file_initialization(structure, dimension=3, units="metal"):
          "read_data lammps.data",
      ]
      return init_commands
@@ -70,7 +70,8 @@ index d7888f1..a0ce172 100644
 +):
 +    if input_control_file is not None:
 +        lmp_tmp_lst, keys_used = [], []
-+        for l in lmp_str_lst:+            ls = l.split()
++        for l in lmp_str_lst:
++            ls = l.split()
 +            if len(ls) >= 1:  # Remove empty lines
 +                key = ls[0]
 +                if key in input_control_file.keys():
