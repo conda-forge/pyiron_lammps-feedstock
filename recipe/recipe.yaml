@@ -14,9 +14,10 @@ source:
   patches:
     - input.patch
     - potential.patch
+    - zcharge.patch
 
 build:
-  number: 3
+  number: 4
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
