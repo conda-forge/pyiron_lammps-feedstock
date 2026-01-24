@@ -1,0 +1,35 @@
+From 06ab1f2ff32464c19430209a6db8c2de3bbf81e5 Mon Sep 17 00:00:00 2001
+From: Jan Janssen <jan-janssen@users.noreply.github.com>
+Date: Sun, 25 Jan 2026 00:18:21 +0100
+Subject: [PATCH] Fix rotation matrix is None (#300)
+
+* Fix rotation matrix is None
+
+* Format black
+
+---------
+
+Co-authored-by: pyiron-runner <pyiron@mpie.de>
+---
+ src/pyiron_lammps/compatibility/calculate.py | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/pyiron_lammps/compatibility/calculate.py b/src/pyiron_lammps/compatibility/calculate.py
+index d9853c0..c77d562 100644
+--- a/src/pyiron_lammps/compatibility/calculate.py
++++ b/src/pyiron_lammps/compatibility/calculate.py
+@@ -403,9 +403,11 @@ def _pressure_to_lammps(pressure, rotation_matrix, units="metal"):
+ 
+     # If necessary, rotate the pressure tensor to the Lammps coordinate frame.
+     # Isotropic, hydrostatic pressures are rotation invariant.
+-    if not np.isclose(
+-        np.matrix.trace(rotation_matrix), 3
+-    ) and not _is_isotropic_hydrostatic(pressure):
++    if (
++        rotation_matrix is not None
++        and not np.isclose(np.matrix.trace(rotation_matrix), 3)
++        and not _is_isotropic_hydrostatic(pressure)
++    ):
+         if any(p is None for p in pressure):
+             raise ValueError(
+                 "Cells which are not orthorhombic or an upper-triangular cell are incompatible with Lammps "
