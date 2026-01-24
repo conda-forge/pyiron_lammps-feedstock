@@ -1,0 +1,29 @@
+From de41322b37cd48a14f60be32c28168fc1b0325c4 Mon Sep 17 00:00:00 2001
+From: Jan Janssen <jan-janssen@users.noreply.github.com>
+Date: Sat, 24 Jan 2026 23:55:14 +0100
+Subject: [PATCH] Potential - strip lines for comparison (#299)
+
+---
+ src/pyiron_lammps/compatibility/file.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/pyiron_lammps/compatibility/file.py b/src/pyiron_lammps/compatibility/file.py
+index 9219f83..a95a822 100644
+--- a/src/pyiron_lammps/compatibility/file.py
++++ b/src/pyiron_lammps/compatibility/file.py
+@@ -106,12 +106,12 @@ def lammps_file_interface_function(
+         read_restart_file=read_restart_file,
+         restart_file=restart_file,
+     ):
+-        if l.startswith("units") and "units" in potential_replace:
++        if l.strip().startswith("units") and "units" in potential_replace:
+             lmp_str_lst.append(potential_replace["units"])
+-        elif l.startswith("atom_style") and "atom_style" in potential_replace:
++        elif l.strip().startswith("atom_style") and "atom_style" in potential_replace:
+             lmp_str_lst.append(potential_replace["atom_style"])
+             atom_type = potential_replace["atom_style"].split()[-1]
+-        elif l.startswith("dimension") and "dimension" in potential_replace:
++        elif l.strip().startswith("dimension") and "dimension" in potential_replace:
+             lmp_str_lst.append(potential_replace["dimension"])
+         else:
+             lmp_str_lst.append(l)
