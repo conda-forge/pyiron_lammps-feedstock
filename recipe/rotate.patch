@@ -1,35 +1,27 @@
-From 06ab1f2ff32464c19430209a6db8c2de3bbf81e5 Mon Sep 17 00:00:00 2001
-From: Jan Janssen <jan-janssen@users.noreply.github.com>
-Date: Sun, 25 Jan 2026 00:18:21 +0100
-Subject: [PATCH] Fix rotation matrix is None (#300)
+From 0cff5cedd259c4509f79750f4bfc4e61fd93daa7 Mon Sep 17 00:00:00 2001
+From: Achraf Atila <achraf.atila@gmail.com>
+Date: Sun, 25 Jan 2026 11:10:13 +0100
+Subject: [PATCH] Update calculate.py (#302)
 
-* Fix rotation matrix is None
+* Update calculate.py
 
-* Format black
-
----------
-
-Co-authored-by: pyiron-runner <pyiron@mpie.de>
+* Update calculate.py
 ---
- src/pyiron_lammps/compatibility/calculate.py | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ src/pyiron_lammps/compatibility/calculate.py | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/src/pyiron_lammps/compatibility/calculate.py b/src/pyiron_lammps/compatibility/calculate.py
-index d9853c0..c77d562 100644
+index c77d562..80574a5 100644
 --- a/src/pyiron_lammps/compatibility/calculate.py
 +++ b/src/pyiron_lammps/compatibility/calculate.py
-@@ -403,9 +403,11 @@ def _pressure_to_lammps(pressure, rotation_matrix, units="metal"):
+@@ -385,6 +385,10 @@ def _pressure_to_lammps(pressure, rotation_matrix, units="metal"):
+         (float): a single, isotropic pressure to be used with the "iso" option
+     """
  
-     # If necessary, rotate the pressure tensor to the Lammps coordinate frame.
-     # Isotropic, hydrostatic pressures are rotation invariant.
--    if not np.isclose(
--        np.matrix.trace(rotation_matrix), 3
--    ) and not _is_isotropic_hydrostatic(pressure):
-+    if (
-+        rotation_matrix is not None
-+        and not np.isclose(np.matrix.trace(rotation_matrix), 3)
-+        and not _is_isotropic_hydrostatic(pressure)
-+    ):
-         if any(p is None for p in pressure):
-             raise ValueError(
-                 "Cells which are not orthorhombic or an upper-triangular cell are incompatible with Lammps "
++    # in case no rotation matrix is given, assume identity
++    if rotation_matrix is None:
++        rotation_matrix = np.eye(3)
++
+     # If pressure is a scalar, only unit conversion is needed.
+     if np.isscalar(pressure):
+         return float(pressure) * LAMMPS_UNIT_CONVERSIONS[units]["pressure"]
