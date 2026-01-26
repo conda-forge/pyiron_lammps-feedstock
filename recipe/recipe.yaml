@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pyiron_lammps
-  version: "0.5.3"
+  version: "0.5.4"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pyiron_lammps-${{ version }}.tar.gz
-  sha256: 91b7d6532229cf8d3e5de6dd8654935609034ace2a2974c76757023ffe76d102
+  sha256: 4c687fead1734eb6bca16278da2628bf8b626b320d9e1d61b1cd039afb86e9fd
   patches:
     - strip.patch
     - rotate.patch
@@ -32,10 +32,10 @@ requirements:
     - pandas
   run:
     - python >=${{ python_min }}
-    - scipy >=1.11.1,<=1.16.3
+    - scipy >=1.11.1,<=1.17.0
     - ase >=3.22.1,<=3.27.0
-    - numpy >=1.26.0,<=2.4.0
-    - pandas >=2.0.3,<=2.3.3
+    - numpy >=1.26.0,<=2.4.1
+    - pandas >=2.0.3,<=3.0.0
 tests:
   - python:
       imports:
